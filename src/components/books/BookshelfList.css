@@ -1,0 +1,10 @@
+.bookshelves {
+    display: flex;
+    flex-direction: column;
+}
+.bookshelf {
+    background-color: rgb(96, 139, 139);
+    border: 1px dotted darkblue;
+    padding: .7rem;
+    margin: .5rem 0;
+}
