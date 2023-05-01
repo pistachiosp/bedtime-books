@@ -10,7 +10,7 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/bookshelves">Bookshelf</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/books">My Bedtime Stories</Link>
+                <Link className="navbar__link" to="/userBooks">My Bedtime Stories</Link>
             </li>
             {
                 localStorage.getItem("book_user")

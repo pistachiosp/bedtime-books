@@ -1,45 +1,45 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export const BookshelfForm = () => {
+export const BookForm = () => {
     /*
         TODO: Add the correct default properties to the
         initial state object
     */
-        const [bookshelf, update] = useState({
+        const [book, update] = useState({
             name: "",
             themeTypeId: 0,
             description: "",
             rating: "",
             readTime: ""
         })
-        const [types, setBookshelfTypes] = useState([])
+        const [types, setBookTypes] = useState([])
     useEffect(() => {
         fetch(`http://localhost:8088/themeTypes`)
             .then(res => res.json())
             .then((bookshelfTypeArray) => {
-                setBookshelfTypes(bookshelfTypeArray)
+                setBookTypes(bookshelfTypeArray)
             })
     },
         []
     )
     /*
         TODO: Use the useNavigation() hook so you can redirect
-        the user to the ticket list
+        the user to the book list
     */
    const navigate = useNavigate()
 
    const handleSaveButtonClick = (event) => {
         event.preventDefault()
         const bookToSendToAPI = {
-            bookName: bookshelf.bookName,
-            themeTypeId: bookshelf.themeTypeId,
-            description: bookshelf.description,
-            rating: bookshelf.rating,
-            readTime: bookshelf.readTime
+            bookName: book.bookName,
+            themeTypeId: book.themeTypeId,
+            description: book.description,
+            rating: book.rating,
+            readTime: book.readTime
             
         }
-        return fetch(`http://localhost:8088/bookshelves`, {
+        return fetch(`http://localhost:8088/books`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -63,10 +63,10 @@ export const BookshelfForm = () => {
                         type="text"
                         className="form-control"
                         placeholder="whats the book name"
-                        value={bookshelf.bookName}
+                        value={book.bookName}
                         onChange={
                             (evt)=> {
-                                const copy = {...bookshelf}
+                                const copy = {...book}
                                 copy.bookName = evt.target.value
                                 update(copy)
                             }
@@ -77,7 +77,7 @@ export const BookshelfForm = () => {
                 <div className="form-group">
                     <label htmlFor="themeTypesId">theme type:</label>
                     <select className="themeTypes" onChange={(evt) => {
-                        const copy = { ...bookshelf}
+                        const copy = { ...book}
                         copy.themeTypeId = parseInt(evt.target.value)
                         update(copy)
                     }}>
@@ -103,10 +103,10 @@ export const BookshelfForm = () => {
                         type="text"
                         className="form-control"
                         placeholder="write whatever you like"
-                        value={bookshelf.description}
+                        value={book.description}
                         onChange={
                             (evt)=> {
-                                const copy = {...bookshelf}
+                                const copy = {...book}
                                 copy.description = evt.target.value
                                 update(copy)
                             }
@@ -117,10 +117,10 @@ export const BookshelfForm = () => {
                 <div className="form-group">
                     <label htmlFor="rating">What would you rate this book:</label>
                     <input type="text"
-                        value={bookshelf.rating}
+                        value={book.rating}
                         onChange={
                             (evt) => {
-                                const copy = {...bookshelf}
+                                const copy = {...book}
                                 copy.rating = evt.target.value
                                 update(copy)
                             }
@@ -134,11 +134,11 @@ export const BookshelfForm = () => {
                         required autoFocus
                         type="text"
                         className="form-control"
-                        placeholder="how long to read this book"
-                        value={bookshelf.readTime}
+                        placeholder="how long to read this book ex:(5-10min 10-15min)"
+                        value={book.readTime}
                         onChange={
                             (evt)=> {
-                                const copy = {...bookshelf}
+                                const copy = {...book}
                                 copy.readTime = evt.target.value
                                 update(copy)
                             }

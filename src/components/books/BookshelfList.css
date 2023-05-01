@@ -1,10 +1,12 @@
-.bookshelves {
+.bookshelfList {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
-.bookshelf {
-    background-color: rgb(96, 139, 139);
+.bookshelfItemList {
+    background-color: rgb(89, 155, 241);
     border: 1px dotted darkblue;
     padding: .7rem;
-    margin: .5rem 0;
+    margin: .5rem .5rem;
+    width: 300px;
 }
