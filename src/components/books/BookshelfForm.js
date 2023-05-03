@@ -20,8 +20,7 @@ export const BookForm = () => {
             .then((bookshelfTypeArray) => {
                 setBookTypes(bookshelfTypeArray)
             })
-    },
-        []
+    },[]
     )
     /*
         TODO: Use the useNavigation() hook so you can redirect

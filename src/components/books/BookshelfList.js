@@ -4,18 +4,13 @@ import "./BookshelfList.css"
 
 export const BookList = () => {
     const [books, setbooks ] = useState([])
-    // const [addToUser, updateAddToUser] = useState()
-    // const [filteredbooks, setFiltered] = useState([])
     const navigate = useNavigate()
-
-    //Returns the current value associated with the given key, or null if the given key does not exist.
     const localBookUser = localStorage.getItem("book_user")
     const bookUserObject = JSON.parse(localBookUser)
     
-
+    // http://localhost:8088/books?_expand=themeTypes
 useEffect(() => {
-    fetch(`http://localhost:8088/books?_expand=themeTypes`)
-    
+    fetch(`http://localhost:8088/books?_expand=themeTypes&_embed=userBooks`)
     .then(res => res.json())
     .then((bookshelfArray) =>{
         setbooks(bookshelfArray)
@@ -23,10 +18,7 @@ useEffect(() => {
     },
     [] // When this array is empty, you are observing initial component state
 )
-// const [userBooks, update] = useState({
-//     userId: 0,
-//     bookId: 0
-// })
+
 
 const handleSaveBookButtonClick = (event, bksId) => {
     event.preventDefault()
@@ -74,4 +66,5 @@ const handleSaveBookButtonClick = (event, bksId) => {
     </>
 }
 
-// {() => navigate("/userBooks/create")}
+
+

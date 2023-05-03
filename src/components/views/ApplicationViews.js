@@ -2,6 +2,8 @@ import { Outlet, Route, Routes } from "react-router-dom"
 import { BookList} from "../books/BookshelfList"
 import { BookForm } from "../books/BookshelfForm"
 import { UsersBookList } from "../books/UserBookList"
+import { BookDescriptionEdit } from "../books/BookDescriptionEdit"
+
 export const ApplicationViews = () => {
 	return (
         <Routes>
@@ -17,6 +19,8 @@ export const ApplicationViews = () => {
                 { <Route path="bookshelves" element={ <BookList /> } /> }
 				 <Route path="bookshelf/create" element={ <BookForm /> } />
                  <Route path="userBooks" element={ <UsersBookList /> } /> 
+                 <Route path="userBooks/:bookId/edit" element={ <BookDescriptionEdit /> } /> 
+                 
             </Route>
         </Routes>
     )

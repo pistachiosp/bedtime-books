@@ -1,0 +1,12 @@
+.userBookList {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.userBookItemList {
+    background-color: rgb(89, 155, 241);
+    border: 1px dotted darkblue;
+    padding: .7rem;
+    margin: .5rem .5rem;
+    width: 300px;
+}
