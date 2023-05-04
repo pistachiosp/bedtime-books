@@ -7,10 +7,10 @@ export const BookForm = () => {
         initial state object
     */
         const [book, update] = useState({
-            name: "",
+            bookName: "",
             themeTypeId: 0,
             description: "",
-            rating: "",
+            rating: 0,
             readTime: ""
         })
         const [types, setBookTypes] = useState([])
@@ -32,9 +32,9 @@ export const BookForm = () => {
         event.preventDefault()
         const bookToSendToAPI = {
             bookName: book.bookName,
-            themeTypeId: book.themeTypeId,
+            themeTypesId: book.themeTypeId,
             description: book.description,
-            rating: book.rating,
+            rating: parseInt(book.rating),
             readTime: book.readTime
             
         }

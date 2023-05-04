@@ -8,7 +8,6 @@ export const BookList = () => {
     const localBookUser = localStorage.getItem("book_user")
     const bookUserObject = JSON.parse(localBookUser)
     
-    // http://localhost:8088/books?_expand=themeTypes
 useEffect(() => {
     fetch(`http://localhost:8088/books?_expand=themeTypes&_embed=userBooks`)
     .then(res => res.json())
@@ -53,9 +52,9 @@ const handleSaveBookButtonClick = (event, bksId) => {
             books.map(
                 (book) => {
                     return <section className='bookshelfItemList' key={`book--${book.id}`}>
-                        <header>{book.bookName}</header>
-                        <header>{book.description}</header>
-                        <header>{book.themeTypes.theme}</header>
+                        <header>Book Name: {book.bookName}</header>
+                        <header>Description: {book.description}</header>
+                        <header>Theme: {book.themeTypes.theme}</header>
                         <button onClick={(clickEvent) => handleSaveBookButtonClick(clickEvent, book)} className="save-book-btn"> Add Me To Your List</button>
                         
                     </section>

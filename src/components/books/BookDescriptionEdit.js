@@ -10,8 +10,8 @@ export const BookDescriptionEdit = () => {
         const navigate = useNavigate()
     
         useEffect(() => {
-            fetch(`http://localhost:8088/userBooks?_expand=user&_expand=book/${bookId}`)
-                .then(response => response.json())
+            fetch(`http://localhost:8088/books/${bookId}`)
+                .then(res => res.json())
                 .then((data) => {
                     update(data)
                 })
